@@ -27,6 +27,7 @@ async function calculateInstant() {
         document.getElementById("hcl_dosing_pump_capacity").innerText = r.hcl_dosing_pump_capacity ?? "";
         
         document.getElementById("naOCI_dosing_pump_capacity").innerText = r.naOCI_dosing_pump_capacity ?? "";
+        document.getElementById("cip_pump_capacity").innerText = r.cip_pump_capacity ?? "";
         document.getElementById("cip_pump_capacity_skid").innerText = r.cip_pump_capacity_skid ?? "";
 
     }

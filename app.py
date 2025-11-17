@@ -33,7 +33,7 @@ def calculate():
         naOCI_dosing_conc = to_float(request.form.get("naOCI_dosing_conc"))
         naOCI_available_conc_in_percent = to_float(request.form.get("naOCI_available_conc_in_percent"))
         cip_flux = to_float(request.form.get("cip_flux"))
-        cip_pump_capacity = to_float(request.form.get("cip_pump_capacity"))
+        # cip_pump_capacity = to_float(request.form.get("cip_pump_capacity"))
 
         
 
@@ -47,6 +47,7 @@ def calculate():
         caustic_dosing_pump_capacity = CEB_pump_flow_rate * caustic_dosing_conc * 1000 / (45 * 10000)
         hcl_dosing_pump_capacity = CEB_pump_flow_rate * hcl_dosing_conc * 1000 / (33 * 10000)
         naOCI_dosing_pump_capacity = CEB_pump_flow_rate * naOCI_dosing_conc * 1000 / (8 * 10000)
+        cip_pump_capacity = no_of_membranes_in_ceil * cip_flux * membrane_area / 1000 if membrane_area else 0
         cip_pump_capacity_skid = math.ceil(cip_pump_capacity)
 
 
@@ -62,6 +63,7 @@ def calculate():
                 "caustic_dosing_pump_capacity": round(caustic_dosing_pump_capacity, 6),
                 "hcl_dosing_pump_capacity": round(hcl_dosing_pump_capacity, 6),
                 "naOCI_dosing_pump_capacity": round(naOCI_dosing_pump_capacity, 6),
+                "cip_pump_capacity": round(cip_pump_capacity, 4),
                 "cip_pump_capacity_skid": cip_pump_capacity_skid
             }
         })
